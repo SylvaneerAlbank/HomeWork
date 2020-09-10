@@ -6,13 +6,14 @@ public class Main {
 
     public static void main(String[] args) {
         Calculator calcObj = new Calculator();
+        calcObj.initInput();
+        calcObj.initVariablesFromInput();
+        System.out.println(calcObj.evaluate());
         //TODO у тебя метод startInput делает все на свете: вводит значения, парсит значения и выводит результат.
         // правильнее будет декомпозировать:
         // calcObj.initInput(); - где у нас только сканнер.
         // calcObj.initVariablesFromInput(); - где бы ты значения из введенной строки записывал в поля класса Calculator
         // calcObj.evaluate(); - где бы происходили вычисления
         // и в main уже сделать вывод на экран
-        // System.out.println(calcObj.getResult());
-        calcObj.startInput();
     }
 }

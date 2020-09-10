@@ -5,48 +5,41 @@ import java.util.Scanner;
 public class InputString {
     String[] strArr;
     char ch;
+    Scanner in = new Scanner(System.in);
+    String str;
 
-    public void startInput() {
-        Scanner in = new Scanner(System.in);
-
+    public void inputLine() {
         System.out.print("Введите строки разделяя пробелами: ");
         strArr = in.nextLine().split(" ");
         if (strArr.length == 0 || strArr[0].length() == 0) {
             throw new IllegalArgumentException("Ввод пустой строки невозможен");
         }
-
-        System.out.print("Введите символ: ");
-        ch = in.next().charAt(0);
-        printResult();
     }
 
-    private void printResult() {
+    public void inputChar() {
+        System.out.print("Введите символ: ");
+        ch = in.next().charAt(0);
+    }
+
+    public String getWordWithMaxEntries() {
         int count = 0;
-        int[] charCount = new int[strArr.length];
+        int lastMax = 0;
         int max = 0;
-        int maxIdX = 0;
 
         //TODO если тебе нужен индекс внутри цикла, лучше использовать обычный for вместо foreach
-        int index = 0;
-        for (String s : strArr) {
-            for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) == (ch)) {
+        for (int i = 0; i < strArr.length; i++) {
+            for (int j = 0; j < strArr[i].length(); j++) {
+                if (strArr[i].charAt(j) == (ch)) {
                     count++;
                 }
             }
-            //TODO зачем использовать массив для хранения временного количество повторений в слове. можно обойтись обычной переменной!
-            charCount[index] = count;
-            if (charCount[index] > max) {
-                max = charCount[index];
-                maxIdX = index;
+            lastMax = count;
+            if (lastMax > max) {
+                max = lastMax;
+                str = strArr[i];
             }
             count = 0;
-            index++;
         }
-        if (max != 0)
-            System.out.print(strArr[maxIdX]);
-        else
-            System.out.print("Нет совпадений");
+        return str;
     }
-
 }
