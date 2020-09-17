@@ -3,9 +3,12 @@ import Animal.Animal;
 import Animal.Elephant;
 import Animal.Tiger;
 import Animal.Wolf;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Runner {
+    //TODO а id точно должен быт static?
     private static int id = 0;
     private int chooseNum, num1, num2 = 0;
     private Animal[] animalCage = new Animal[10];
@@ -32,6 +35,9 @@ public class Runner {
         }
     }
 
+    //TODO придираюсь: метод переводится - как "получить всех животных" но метод ничего не возвращает
+    // я считаю, что такой метод должен иметь название printAnimals()
+    // ИМХО
     public void getAllAnimals() {
         for (Animal animal : animalCage) {
             System.out.println(animal.toString());
@@ -77,6 +83,8 @@ public class Runner {
         }
     }
 
+    //TODO придираюсь: метод сортировки безусловно работает, но это велосипед
+    // посмотри про Comparator, интерфейс Comparable и сортировки с помощью Arrays.sort()
     private void sortByWeight() {
         int n = animalCage.length;
         for (int i = 0; i < n - 1; i++) {
@@ -180,9 +188,9 @@ public class Runner {
     public static void main(String[] args) {
         Runner runner = new Runner();
         runner.fillAnimalCage(); //заполнить клетку случайными животными
-        //  runner.getAllAnimals(); //Показать весь питомник
-        // runner.getSpecificAnimal(); //Показать только выбранный вид животных
-        //runner.getSortedAnimals(); //Отсортировать коллекцию по выбранному параметру
+        runner.getAllAnimals(); //Показать весь питомник
+        runner.getSpecificAnimal(); //Показать только выбранный вид животных
+        runner.getSortedAnimals(); //Отсортировать коллекцию по выбранному параметру
         runner.getAnimalByParameter();//Вывести животное подходящее под заданные параметры
     }
 }

@@ -5,6 +5,12 @@ public abstract class Animal {
     protected int hungryStatus;
     private int weight;
 
+    //TODO по Java код конвенции:
+    // - все переменные начинаются с маленькой буквы
+    // - функции с маленькой буквы
+    // - класс с заглавной
+    // - константы полностью заглавными
+    // символ "_" используется ТОЛЬКО в константах, заменяя пробел (пример MAX_VALUE)
     public Animal(String _name, int _hungryStatus, int _weight) {
         this.name = _name;
         this.hungryStatus = _hungryStatus;
