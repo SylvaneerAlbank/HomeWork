@@ -1,10 +1,10 @@
 package Runner;
+
 import Animal.Animal;
 import Animal.Elephant;
 import Animal.Tiger;
 import Animal.Wolf;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Runner {
