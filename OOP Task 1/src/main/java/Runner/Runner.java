@@ -1,5 +1,8 @@
 package Runner;
 
+import java.util.Comparator;
+import java.util.Arrays;
+
 import Animal.Animal;
 import Animal.Elephant;
 import Animal.Tiger;
@@ -8,10 +11,35 @@ import Animal.Wolf;
 import java.util.Scanner;
 
 public class Runner {
-    //TODO а id точно должен быт static?
-    private static int id = 0;
+    //TODO а id точно должен быт static?  нет (
+    private int id = 0;
     private int chooseNum, num1, num2 = 0;
     private Animal[] animalCage = new Animal[10];
+
+    private final class SortByWeight implements Comparator<Animal> {
+        public int compare(Animal a, Animal b) {
+            if (a.getWeight() < b.getWeight()) return -1;
+            else if (a.getWeight() == b.getWeight()) return 0;
+            else return 1;
+        }
+    }
+
+    private final class SortByHungryStatus implements Comparator<Animal> {
+        public int compare(Animal a, Animal b) {
+            if (a.getHungryStatus() < b.getHungryStatus()) return -1;
+            else if (a.getHungryStatus() == b.getHungryStatus()) return 0;
+            else return 1;
+        }
+    }
+
+    private final class SortByName implements Comparator<Animal> {
+        public int compare(Animal a, Animal b) {
+            int res = a.getName().compareTo(b.getName());
+            if (res < 0) return 1;
+            else if (res == 0) return 0;
+            else return -1;
+        }
+    }
 
     private int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
@@ -38,7 +66,7 @@ public class Runner {
     //TODO придираюсь: метод переводится - как "получить всех животных" но метод ничего не возвращает
     // я считаю, что такой метод должен иметь название printAnimals()
     // ИМХО
-    public void getAllAnimals() {
+    public void printAnimals() {
         for (Animal animal : animalCage) {
             System.out.println(animal.toString());
         }
@@ -85,62 +113,22 @@ public class Runner {
 
     //TODO придираюсь: метод сортировки безусловно работает, но это велосипед
     // посмотри про Comparator, интерфейс Comparable и сортировки с помощью Arrays.sort()
-    private void sortByWeight() {
-        int n = animalCage.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (animalCage[j].getWeight() > animalCage[j + 1].getWeight()) {
-                    Animal temp = animalCage[j];
-                    animalCage[j] = animalCage[j + 1];
-                    animalCage[j + 1] = temp;
-                }
-            }
-        }
-    }
-
-    private void sortByHungryStatus() {
-        int n = animalCage.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (animalCage[j].getHungryStatus() > animalCage[j + 1].getHungryStatus()) {
-                    Animal temp = animalCage[j];
-                    animalCage[j] = animalCage[j + 1];
-                    animalCage[j + 1] = temp;
-                }
-            }
-        }
-    }
-
-    private void sortByName() {
-        int n = animalCage.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                int res = animalCage[j].getName().compareTo(animalCage[j + 1].getName());
-                if (res > 0) {
-                    Animal temp = animalCage[j];
-                    animalCage[j] = animalCage[j + 1];
-                    animalCage[j + 1] = temp;
-                }
-            }
-        }
-
-    }
 
     public void getSortedAnimals() {
         System.out.println("Выберите параметр для сортировки: \n1)По весу; \n2)По сытости; \n3)По имени; \nВвод:");
         inputChoose();
         switch (chooseNum) {
             case 1:
-                sortByWeight();
-                getAllAnimals();
+                Arrays.sort(animalCage, new SortByWeight());
+                printAnimals();
                 break;
             case 2:
-                sortByHungryStatus();
-                getAllAnimals();
+                Arrays.sort(animalCage, new SortByHungryStatus());
+                printAnimals();
                 break;
             case 3:
-                sortByName();
-                getAllAnimals();
+                Arrays.sort(animalCage, new SortByName());
+                printAnimals();
                 break;
             default:
                 throw new IllegalArgumentException("Неправильный ввод");
@@ -188,9 +176,9 @@ public class Runner {
     public static void main(String[] args) {
         Runner runner = new Runner();
         runner.fillAnimalCage(); //заполнить клетку случайными животными
-        runner.getAllAnimals(); //Показать весь питомник
-        runner.getSpecificAnimal(); //Показать только выбранный вид животных
+        //runner.printAnimals(); //Показать весь питомник
+        //runner.getSpecificAnimal(); //Показать только выбранный вид животных
         runner.getSortedAnimals(); //Отсортировать коллекцию по выбранному параметру
-        runner.getAnimalByParameter();//Вывести животное подходящее под заданные параметры
+        // runner.getAnimalByParameter();//Вывести животное подходящее под заданные параметры
     }
 }

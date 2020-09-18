@@ -11,10 +11,10 @@ public abstract class Animal {
     // - класс с заглавной
     // - константы полностью заглавными
     // символ "_" используется ТОЛЬКО в константах, заменяя пробел (пример MAX_VALUE)
-    public Animal(String _name, int _hungryStatus, int _weight) {
-        this.name = _name;
-        this.hungryStatus = _hungryStatus;
-        this.weight = _weight;
+    public Animal(String n, int h, int w) {
+        this.name = n;
+        this.hungryStatus = h;
+        this.weight = w;
     }
 
     public abstract void walk();
