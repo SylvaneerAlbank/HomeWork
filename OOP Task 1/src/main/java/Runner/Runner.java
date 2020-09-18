@@ -11,11 +11,11 @@ import Animal.Wolf;
 import java.util.Scanner;
 
 public class Runner {
-    //TODO а id точно должен быт static?  нет (
     private int id = 0;
     private int chooseNum, num1, num2 = 0;
     private Animal[] animalCage = new Animal[10];
 
+    //TODO нарушение конвенции, всегда!!! требуется код заключать в {} даже если он однострочный
     private final class SortByWeight implements Comparator<Animal> {
         public int compare(Animal a, Animal b) {
             if (a.getWeight() < b.getWeight()) return -1;
@@ -63,9 +63,6 @@ public class Runner {
         }
     }
 
-    //TODO придираюсь: метод переводится - как "получить всех животных" но метод ничего не возвращает
-    // я считаю, что такой метод должен иметь название printAnimals()
-    // ИМХО
     public void printAnimals() {
         for (Animal animal : animalCage) {
             System.out.println(animal.toString());
@@ -110,9 +107,6 @@ public class Runner {
                 throw new IllegalArgumentException("Неправильный ввод");
         }
     }
-
-    //TODO придираюсь: метод сортировки безусловно работает, но это велосипед
-    // посмотри про Comparator, интерфейс Comparable и сортировки с помощью Arrays.sort()
 
     public void getSortedAnimals() {
         System.out.println("Выберите параметр для сортировки: \n1)По весу; \n2)По сытости; \n3)По имени; \nВвод:");
