@@ -18,26 +18,38 @@ public class Runner {
     //TODO нарушение конвенции, всегда!!! требуется код заключать в {} даже если он однострочный
     private final class SortByWeight implements Comparator<Animal> {
         public int compare(Animal a, Animal b) {
-            if (a.getWeight() < b.getWeight()) return -1;
-            else if (a.getWeight() == b.getWeight()) return 0;
-            else return 1;
+            if (a.getWeight() < b.getWeight()) {
+                return -1;
+            } else if (a.getWeight() == b.getWeight()) {
+                return 0;
+            } else {
+                return 1;
+            }
         }
     }
 
     private final class SortByHungryStatus implements Comparator<Animal> {
         public int compare(Animal a, Animal b) {
-            if (a.getHungryStatus() < b.getHungryStatus()) return -1;
-            else if (a.getHungryStatus() == b.getHungryStatus()) return 0;
-            else return 1;
+            if (a.getHungryStatus() < b.getHungryStatus()) {
+                return -1;
+            } else if (a.getHungryStatus() == b.getHungryStatus()) {
+                return 0;
+            } else {
+                return 1;
+            }
         }
     }
 
     private final class SortByName implements Comparator<Animal> {
         public int compare(Animal a, Animal b) {
             int res = a.getName().compareTo(b.getName());
-            if (res < 0) return 1;
-            else if (res == 0) return 0;
-            else return -1;
+            if (res < 0) {
+                return 1;
+            } else if (res == 0) {
+                return 0;
+            } else {
+                return -1;
+            }
         }
     }
 
