@@ -26,7 +26,6 @@ public class InputString {
         int lastMax = 0;
         int max = 0;
 
-        //TODO если тебе нужен индекс внутри цикла, лучше использовать обычный for вместо foreach
         for (int i = 0; i < strArr.length; i++) {
             for (int j = 0; j < strArr[i].length(); j++) {
                 if (strArr[i].charAt(j) == (ch)) {

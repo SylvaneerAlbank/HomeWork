@@ -9,7 +9,7 @@ public class Main {
         inputObj.inputLine();
         inputObj.inputChar();
         System.out.println(inputObj.getWordWithMaxEntries());
-        //TODO метод делает всю работу, это нехорошо,
+        //метод делает всю работу, это нехорошо,
         // лучше декомпозировать
         // inputObj.inputLine(); - вводишь и запоинаеш ьстроку
         // initInput.initChar(); - вводишь и запоминаешь символ

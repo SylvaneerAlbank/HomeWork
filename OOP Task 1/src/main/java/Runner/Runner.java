@@ -15,7 +15,7 @@ public class Runner {
     private int chooseNum, num1, num2 = 0;
     private Animal[] animalCage = new Animal[10];
 
-    //TODO нарушение конвенции, всегда!!! требуется код заключать в {} даже если он однострочный
+    //всегда!!! требуется код заключать в {} даже если он однострочный
     private final class SortByWeight implements Comparator<Animal> {
         public int compare(Animal a, Animal b) {
             if (a.getWeight() < b.getWeight()) {

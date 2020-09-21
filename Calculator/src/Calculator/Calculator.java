@@ -11,10 +11,8 @@ public class Calculator {
     Scanner scanner = new Scanner(System.in);
 
     public void initInput() {
-        //TODO переменная не используется, требуется удалить
         System.out.print("Введите операцию в формате 2+3: ");
         text = scanner.nextLine();
-        //TODO success всегда true в этом условии нет необходимости
     }
 
     public void initVariablesFromInput() {
@@ -41,7 +39,6 @@ public class Calculator {
                 result = num1 * num2;
                 break;
             case '/':
-                //TODO деление на 0 необходимо тоже предусмотреть
                 if (num2 == 0)
                     throw new IllegalArgumentException("Нельзя делить на 0 !!!");
                 else

@@ -5,7 +5,7 @@ public abstract class Animal {
     protected int hungryStatus;
     private int weight;
 
-    //TODO по Java код конвенции:
+    //по Java код конвенции:
     // - все переменные начинаются с маленькой буквы
     // - функции с маленькой буквы
     // - класс с заглавной
